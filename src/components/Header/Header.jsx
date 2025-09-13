@@ -2,12 +2,18 @@ import './Header.css';
 import Logo from '../../assets/logo.svg';
 import Avatar from '../../assets/avatar.png';
 
-function Header() {
+function Header({ handleAddClick }) {
   return (
     <header className='header'>
       <img className='header__logo' src={Logo} alt='' />
       <p className='header__date-and-location'>Date, Location</p>
-      <button className='header__add-clothes-btn'>+ Add clothes</button>
+      <button
+        onClick={handleAddClick}
+        type='button'
+        className='header__add-clothes-btn'
+      >
+        + Add clothes
+      </button>
       <div className='header__user-container'>
         <p className='header__username'>Terrence Tegegne</p>
         <img src={Avatar} alt='Terrence Tegegne' className='header__avatar' />

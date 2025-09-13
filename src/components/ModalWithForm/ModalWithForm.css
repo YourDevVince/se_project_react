@@ -8,6 +8,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  visibility: hidden;
+}
+
+.modal__opened {
+  visibility: visible;
 }
 
 .modal__close {
@@ -29,13 +34,14 @@
   padding: 28px 28px 36px;
   width: 100%;
   max-width: 436px;
+  box-sizing: border-box;
 }
 
 .modal__title {
   font-size: 24px;
   font-weight: 700;
   line-height: 28px;
-  margin: 0;
+  margin: 0 0 24px 0;
   padding: 0;
 }
 
@@ -45,6 +51,7 @@
   gap: 24px;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .modal__label {
@@ -60,6 +67,11 @@
 .modal__input {
   border: none;
   border-bottom: 1px solid #000000;
+}
+
+.modal__input:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .modal__legend {
@@ -82,7 +94,7 @@
 }
 
 .modal__submit {
-  margin-top: 32px;
+  margin-top: 8px;
   padding: 8px 16px;
   background-color: #0000004d;
   max-width: 124px;
