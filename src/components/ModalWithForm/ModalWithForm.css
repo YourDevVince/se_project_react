@@ -107,10 +107,14 @@
 .modal__submit {
   margin-top: 8px;
   padding: 8px 16px;
-  background-color: #0000004d;
+  background-color: #000000;
   max-width: 124px;
   color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.modal__submit:hover {
+  opacity: 60%;
 }

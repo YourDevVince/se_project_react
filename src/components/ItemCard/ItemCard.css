@@ -14,11 +14,14 @@
   position: absolute;
   top: 16px;
   margin: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  color: #00000099;
 }
 
 .card__image {
   width: 100%;
-
+  border: solid 1px #0000004d;
   object-fit: cover;
   border-radius: 19px;
 }
