@@ -10,6 +10,8 @@ import ItemModal from '../ItemModal/ItemModal';
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import { coordinates, WEATHER_API_KEY } from '../../utils/constants';
 
+import { defaultClothingItems } from '../../utils/constants';
+
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: '',
@@ -18,6 +20,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState('');
   const [selectedCard, setSelectedCard] = useState({});
+  const [items, setItems] = useState(defaultClothingItems);
 
   const handleCardClick = (card) => {
     setActiveModal('preview');
@@ -32,6 +35,22 @@ function App() {
     setActiveModal('');
   };
 
+  const handleAddItemSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value.trim();
+    const link = form.imageUrl.value.trim();
+    const weather = form.weather.value;
+    if (!name || !link || !weather) return;
+
+    setItems((prev) => [
+      { _id: Date.now(), name, link, weather: weather.toLowerCase() },
+      ...prev,
+    ]);
+    form.reset();
+    setActiveModal('');
+  };
+
   useEffect(() => {
     getWeather(coordinates, WEATHER_API_KEY)
       .then((data) => {
@@ -39,38 +58,48 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch((err) => {
-        console.log(err);
+        console.lerror('Weather load failed', err);
       });
   }, []);
   return (
     <div className='app'>
       <div className='app__content'>
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          items={items}
+          handleCardClick={handleCardClick}
+        />
         <Footer />
       </div>
       <ModalWithForm
+        name='add-garment'
         buttonText='Add garment'
         title='New garment'
-        activeModal={activeModal}
+        isOpen={activeModal === 'add-garment'}
         handleCloseClick={closeActiveModal}
+        onSubmit={handleAddItemSubmit}
       >
         <label htmlFor='name' className='modal__label'>
           Name{' '}
           <input
             type='text'
+            name='name'
             className='modal__input'
             id='name'
             placeholder='Name'
+            required
           />
         </label>
         <label htmlFor='imageUrl' className='modal__label'>
           Image{' '}
           <input
             type='url'
+            name='imageUrl'
             className='modal__input'
             id='imageUrl'
             placeholder='Image URL'
+            required
           />
         </label>
         <fieldset className='modal__radio-buttons'>
@@ -81,6 +110,7 @@ function App() {
               type='radio'
               id='hot'
               className='modal__radio-input'
+              value='hot'
             />{' '}
             <span className='radio__label'>Hot</span>
           </label>
@@ -93,6 +123,7 @@ function App() {
               type='radio'
               id='warm'
               className='modal__radio-input'
+              value='warm'
             />{' '}
             <span className='radio__label'>Warm</span>
           </label>
@@ -105,6 +136,7 @@ function App() {
               type='radio'
               id='cold'
               className='modal__radio-input'
+              value='cold'
             />{' '}
             <span className='radio__label'>Cold</span>
           </label>
