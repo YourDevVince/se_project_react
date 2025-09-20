@@ -11,6 +11,7 @@ import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import { coordinates, WEATHER_API_KEY } from '../../utils/constants';
 
 import { defaultClothingItems } from '../../utils/constants';
+import { use } from 'react';
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -61,6 +62,19 @@ function App() {
         console.lerror('Weather load failed', err);
       });
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === 'Escape') {
+        closeActiveModal();
+      }
+    };
+    document.addEventListener('keydown', handleEscClose);
+    return () => {
+      document.removeEventListener('keydown', handleEscClose);
+    };
+  }, [activeModal]);
   return (
     <div className='app'>
       <div className='app__content'>
