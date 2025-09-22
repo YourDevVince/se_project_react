@@ -11,7 +11,6 @@ import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import { coordinates, WEATHER_API_KEY } from '../../utils/constants';
 
 import { defaultClothingItems } from '../../utils/constants';
-import { use } from 'react';
 
 function App() {
   const [weatherData, setWeatherData] = useState({
