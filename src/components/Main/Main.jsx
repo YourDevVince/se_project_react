@@ -6,7 +6,7 @@ import ItemCard from '../ItemCard/ItemCard';
 import './Main.css';
 
 function Main({ weatherData, handleCardClick, clothingItems }) {
-  const list = (clothingItems || []).filter(
+  const filteredClothingItems = (clothingItems || []).filter(
     (i) => i.weather?.toLowerCase() === weatherData.type
   );
 
@@ -21,7 +21,7 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
           {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className='cards__list'>
-          {list.map((item) => (
+          {filteredClothingItems.map((item) => (
             <ItemCard
               key={item._id}
               item={item}

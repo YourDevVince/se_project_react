@@ -6,7 +6,7 @@ export default function ClothesSection({
   handleCardClick,
   handleAddClick,
 }) {
-  const list = clothingItems;
+  const clothingItemsList = clothingItems;
 
   return (
     <div className='clothes-section'>
@@ -20,7 +20,7 @@ export default function ClothesSection({
         </button>
       </div>
       <ul className='clothes-section__items'>
-        {list.map((item) => (
+        {clothingItemsList.map((item) => (
           <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
         ))}
       </ul>
