@@ -3,10 +3,14 @@
   width: 56px;
   height: 28px;
   border-radius: 20px;
-  border: 2px solid #000;
+  border: 2px solid #7e7e7e;
   cursor: pointer;
   position: relative;
   text-align: center;
+}
+
+.toggle-switch:hover {
+  border-color: #000;
 }
 
 .toggle-switch__checkbox {
