@@ -8,7 +8,7 @@ function ItemModal({ activeModal, card, handleCloseClick, onDeleteItem }) {
   };
   return (
     <div
-      className={`modal ${activeModal === 'preview' && 'modal__opened'}`}
+      className={`modal ${activeModal === 'preview' && 'modal_opened'}`}
       onMouseDown={handleMouseDown}
     >
       <div className='modal__content modal__content_type_image'>
