@@ -8,9 +8,12 @@ export function useForm(defaultValues) {
     setValues({ ...values, [name]: value });
   };
 
-  const resetForm = useCallback(() => {
-    setValues(defaultValues);
-  }, [defaultValues]);
+  const resetForm = useCallback(
+    (newValues = defaultValues) => {
+      setValues(newValues);
+    },
+    [defaultValues]
+  );
 
   return { values, setValues, handleChange, resetForm };
 }

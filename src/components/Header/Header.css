@@ -18,6 +18,22 @@
   height: 40px;
 }
 
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
 .header__date-and-location {
   margin: 0;
   font-size: 20px;
@@ -54,4 +70,16 @@
 }
 .header__profile-link {
   text-decoration: none;
+}
+
+.header__auth {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.header__auth-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
