@@ -21,7 +21,14 @@ import ItemModal from '../ItemModal/ItemModal';
 import { getWeather, filterWeatherData } from '../../utils/weatherApi';
 import { coordinates, WEATHER_API_KEY } from '../../utils/constants';
 
-import { getItems, addItem, removeItem, updateUserInfo } from '../../utils/api';
+import {
+  getItems,
+  addItem,
+  removeItem,
+  likeItem,
+  dislikeItem,
+  updateUserInfo,
+} from '../../utils/api';
 import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnitContext';
 
 function App() {
@@ -149,6 +156,21 @@ function App() {
     setActiveModal('');
   };
 
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem('jwt');
+    if (!token) return;
+
+    const request = !isLiked ? likeItem(id, token) : dislikeItem(id, token);
+
+    request
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === id ? updatedCard : item))
+        );
+      })
+      .catch(console.error);
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     if (!token) return;
@@ -219,7 +241,9 @@ function App() {
                     weatherData={weatherData}
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
                     currentTemperatureUnit={currentTemperatureUnit}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />

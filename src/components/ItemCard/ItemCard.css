@@ -25,3 +25,34 @@
   object-fit: cover;
   border-radius: 19px;
 }
+
+.card__like-btn {
+  background-image: url(../../assets/heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 23px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  opacity: 40%;
+  margin: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.card__like-btn:hover {
+  opacity: 1;
+}
+
+.card__like-btn_active {
+  background-image: url(../../assets/heart-active.svg);
+  opacity: 1;
+}
+
+.card__like-btn_active:hover {
+  opacity: 0.4;
+}

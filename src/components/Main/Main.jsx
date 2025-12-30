@@ -5,7 +5,13 @@ import CurrentTemperatureUnitContext from '../../contexts/CurrentTemperatureUnit
 import ItemCard from '../ItemCard/ItemCard';
 import './Main.css';
 
-function Main({ weatherData, handleCardClick, clothingItems }) {
+function Main({
+  weatherData,
+  handleCardClick,
+  clothingItems,
+  onCardLike,
+  isLoggedIn,
+}) {
   const filteredClothingItems = (clothingItems || []).filter(
     (i) => i.weather?.toLowerCase() === weatherData.type
   );
@@ -26,6 +32,8 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
               key={item._id}
               item={item}
               onCardClick={handleCardClick}
+              onCardLike={onCardLike}
+              isLoggedIn={isLoggedIn}
             />
           ))}
         </ul>

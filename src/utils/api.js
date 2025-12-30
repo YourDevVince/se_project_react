@@ -30,6 +30,24 @@ export const removeItem = (itemId, token) =>
     },
   }).then(handleServerResponse);
 
+export const likeItem = (itemId, token) =>
+  fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+
+export const dislikeItem = (itemId, token) =>
+  fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+
 export const updateUserInfo = ({ name, avatar }, token) =>
   fetch(`${baseUrl}/users/me`, {
     method: 'PATCH',
