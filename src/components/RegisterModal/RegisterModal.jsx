@@ -25,33 +25,10 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal }) => {
       onSubmit={handleSubmit}
     >
       <label className='modal__label'>
-        Name
-        <input
-          name='name'
-          type='text'
-          className='modal__input'
-          value={values.name}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label className='modal__label'>
-        Avatar URL
-        <input
-          name='avatar'
-          type='url'
-          className='modal__input'
-          value={values.avatar}
-          onChange={handleChange}
-          required
-        />
-      </label>
-
-      <label className='modal__label'>
-        Email
+        Email*
         <input
           name='email'
+          placeholder='Email'
           type='email'
           className='modal__input'
           value={values.email}
@@ -61,12 +38,39 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal }) => {
       </label>
 
       <label className='modal__label'>
-        Password
+        Password*
         <input
           name='password'
+          placeholder='Password'
           type='password'
           className='modal__input'
           value={values.password}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label className='modal__label'>
+        Name*
+        <input
+          name='name'
+          placeholder='Name'
+          type='text'
+          className='modal__input'
+          value={values.name}
+          onChange={handleChange}
+          required
+        />
+      </label>
+
+      <label className='modal__label'>
+        Avatar URL*
+        <input
+          name='avatar'
+          placeholder='Avatar URL'
+          type='url'
+          className='modal__input'
+          value={values.avatar}
           onChange={handleChange}
           required
         />

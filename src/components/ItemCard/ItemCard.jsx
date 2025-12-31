@@ -23,14 +23,18 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
         alt={item.name}
         className='card__image'
       />
-      <p className='card__name'>{item.name}</p>
-      {isLoggedIn && (
-        <button
-          type='button'
-          className={`card__like-btn ${isLiked ? 'card__like-btn_active' : ''}`}
-          onClick={handleLike}
-        />
-      )}
+      <div className='card__header'>
+        <p className='card__name'>{item.name}</p>
+        {isLoggedIn && (
+          <button
+            type='button'
+            className={`card__like-btn ${
+              isLiked ? 'card__like-btn_active' : ''
+            }`}
+            onClick={handleLike}
+          />
+        )}
+      </div>
     </li>
   );
 }

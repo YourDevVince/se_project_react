@@ -2,13 +2,13 @@ import './ItemModal.css';
 import { useContext } from 'react';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
-function ItemModal({ activeModal, card, handleCloseClick, onDeleteItem }) {
+function ItemModal({ activeModal, card, onCloseModal, onDeleteItem }) {
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card?.owner === currentUser?._id;
 
   const handleMouseDown = (e) => {
     if (e.target === e.currentTarget) {
-      handleCloseClick();
+      onCloseModal();
     }
   };
   return (
@@ -18,7 +18,7 @@ function ItemModal({ activeModal, card, handleCloseClick, onDeleteItem }) {
     >
       <div className='modal__content modal__content_type_image'>
         <button
-          onClick={handleCloseClick}
+          onClick={onCloseModal}
           type='button'
           className='modal__close'
         ></button>

@@ -21,14 +21,19 @@ export default function SideBar({ onEditProfile, onLogout }) {
           <div className='sidebar__avatar-placeholder'>{firstLetter}</div>
         )}
       </div>
+      <div className='sidebar__button-container'>
+        <button
+          type='button'
+          className='sidebar__button'
+          onClick={onEditProfile}
+        >
+          Change profile data
+        </button>
 
-      <button type='button' className='sidebar__button' onClick={onEditProfile}>
-        Change profile data
-      </button>
-
-      <button type='button' className='sidebar__button' onClick={onLogout}>
-        Log out
-      </button>
+        <button type='button' className='sidebar__button' onClick={onLogout}>
+          Log out
+        </button>
+      </div>
     </aside>
   );
 }

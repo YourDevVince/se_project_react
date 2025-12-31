@@ -68,14 +68,14 @@ function Header({
             onClick={handleRegisterClick}
             className='header__auth-btn'
           >
-            Sign up
+            Sign Up
           </button>
           <button
             type='button'
             onClick={handleLoginClick}
             className='header__auth-btn'
           >
-            Sign in
+            Log In
           </button>
         </div>
       )}

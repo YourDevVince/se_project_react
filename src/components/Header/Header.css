@@ -74,12 +74,16 @@
 
 .header__auth {
   display: flex;
-  gap: 6px;
+  gap: 20px;
   align-items: center;
+  margin-left: 20px;
 }
 
 .header__auth-btn {
   background: none;
   border: none;
   cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
 }

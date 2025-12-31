@@ -11,6 +11,7 @@
   flex-direction: row-reverse;
   align-items: center;
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 .sidebar__avatar {
@@ -25,4 +26,20 @@
   font-weight: 700;
   font-size: 20px;
   white-space: nowrap;
+}
+
+.sidebar__button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0 0p 0 20px;
+}
+
+.sidebar__button {
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
 }
