@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from '../../hooks/useForm';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import './RegisterModal.css';
 
 const RegisterModal = ({ isOpen, onRegister, onCloseModal }) => {
   const defaultValues = { name: '', avatar: '', email: '', password: '' };

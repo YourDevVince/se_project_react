@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from '../../hooks/useForm';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import './LoginModal.css';
 
 const LoginModal = ({ isOpen, onLogin, onCloseModal }) => {
   const defaultValues = { email: '', password: '' };
