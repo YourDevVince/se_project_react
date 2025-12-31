@@ -11,9 +11,11 @@ export default function ClothesSection({
   handleAddClick,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  const clothingItemsList = clothingItems.filter(
-    (item) => item.owner === currentUser?._id
-  );
+
+  const clothingItemsList = clothingItems.filter((item) => {
+    const ownerId = item.owner?._id || item.owner;
+    return ownerId === currentUser?._id;
+  });
 
   return (
     <div className='clothes-section'>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import './App.css';
 import Header from '../Header/Header';
@@ -47,6 +47,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+  const navigate = useNavigate();
 
   const handleToggleSwitch = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
@@ -68,15 +69,16 @@ function App() {
   const handleLogin = ({ email, password }) => {
     authorize({ email, password })
       .then((res) => {
-        if (!res.token) {
-          return Promise.reject('No token returned from server');
-        }
+        if (!res.token) return Promise.reject('No token returned from server');
         localStorage.setItem('jwt', res.token);
         setIsLoggedIn(true);
         closeActiveModal();
         return checkToken(res.token);
       })
-      .then((user) => setCurrentUser(user))
+      .then((user) => {
+        setCurrentUser(user);
+        navigate('/');
+      })
       .catch((err) => console.error('Login failed', err));
   };
 
@@ -85,32 +87,35 @@ function App() {
     setIsLoggedIn(false);
     setCurrentUser(null);
     setActiveModal('');
+    navigate('/');
   };
 
   const handleRegister = ({ name, avatar, email, password }) => {
     register({ name, avatar, email, password })
       .then(() => authorize({ email, password }))
       .then((res) => {
-        if (!res.token) {
-          return Promise.reject('No token returned from server');
-        }
+        if (!res.token) return Promise.reject('No token returned from server');
         localStorage.setItem('jwt', res.token);
         setIsLoggedIn(true);
         closeActiveModal();
         return checkToken(res.token);
       })
-      .then((user) => setCurrentUser(user))
+      .then((user) => {
+        setCurrentUser(user);
+        navigate('/');
+      })
       .catch((err) => console.error('Registration failed', err));
   };
 
   const handleUpdateUser = ({ name, avatar }) => {
     const token = localStorage.getItem('jwt');
+
     updateUserInfo({ name, avatar }, token)
       .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+        setCurrentUser((prev) => ({ ...prev, ...updatedUser })); // ✅ merge
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => console.error('Profile update failed', err));
   };
 
   const onAddItem = (inputValues) => {

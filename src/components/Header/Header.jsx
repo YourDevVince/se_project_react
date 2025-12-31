@@ -19,8 +19,6 @@ function Header({
   });
   const currentUser = useContext(CurrentUserContext);
 
-  const userName = currentUser?.name || 'User';
-  const userAvatar = currentUser?.avatar || Avatar;
   const firstLetter = (currentUser?.name?.trim()?.[0] || 'U').toUpperCase();
 
   return (

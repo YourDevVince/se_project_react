@@ -4,7 +4,8 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function ItemModal({ activeModal, card, onCloseModal, onDeleteItem }) {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = card?.owner === currentUser?._id;
+  const ownerId = card?.owner?._id || card?.owner;
+  const isOwn = ownerId && currentUser?._id && ownerId === currentUser._id;
 
   const handleMouseDown = (e) => {
     if (e.target === e.currentTarget) {
@@ -13,7 +14,7 @@ function ItemModal({ activeModal, card, onCloseModal, onDeleteItem }) {
   };
   return (
     <div
-      className={`modal ${activeModal === 'preview' && 'modal_opened'}`}
+      className={`modal ${activeModal === 'preview' ? 'modal_opened' : ''}`}
       onMouseDown={handleMouseDown}
     >
       <div className='modal__content modal__content_type_image'>

@@ -99,7 +99,7 @@
 }
 .radio__label {
   color: #000;
-  opacity: 50%;
+  opacity: 0.5;
   font-weight: 600;
 }
 
@@ -119,5 +119,5 @@
 }
 
 .modal__submit:hover {
-  opacity: 60%;
+  opacity: 0.6;
 }

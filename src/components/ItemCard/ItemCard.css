@@ -36,14 +36,11 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  /* position: absolute;
-  top: 16px;
-  right: 16px; */
   width: 23px;
   height: 20px;
   border: none;
   background-color: transparent;
-  opacity: 40%;
+  opacity: 0.4;
   margin: 0;
   transition: opacity 0.3s ease;
   cursor: pointer;
