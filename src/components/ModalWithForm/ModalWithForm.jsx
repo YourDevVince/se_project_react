@@ -8,6 +8,8 @@ function ModalWithForm({
   handleCloseClick,
   onSubmit,
   isOpen = false,
+  switchText,
+  onSwitch,
 }) {
   const handleMouseDown = (e) => {
     if (e.target === e.currentTarget) {
@@ -27,11 +29,28 @@ function ModalWithForm({
           type='button'
           className='modal__close'
         ></button>
+
         <form className='modal__form' onSubmit={onSubmit} noValidate>
           {children}
-          <button type='submit' className='modal__submit'>
-            {buttonText}
-          </button>
+
+          <div className='modal__actions'>
+            <button type='submit' className='modal__submit'>
+              {buttonText}
+            </button>
+
+            {switchText && onSwitch && (
+              <div className='modal__switch'>
+                <span className='modal__switch-text'>or</span>
+                <button
+                  type='button'
+                  className='modal__switch-button'
+                  onClick={onSwitch}
+                >
+                  {switchText}
+                </button>
+              </div>
+            )}
+          </div>
         </form>
       </div>
     </div>

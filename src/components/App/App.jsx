@@ -63,6 +63,7 @@ function App() {
   };
 
   const handleRegisterClick = () => setActiveModal('register');
+
   const handleLoginClick = () => setActiveModal('login');
   const handleEditProfileClick = () => setActiveModal('edit-profile');
 
@@ -86,7 +87,7 @@ function App() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     setCurrentUser(null);
-    setActiveModal('');
+    closeActiveModal();
     navigate('/');
   };
 
@@ -234,7 +235,6 @@ function App() {
               handleAddClick={handleAddClick}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
-              currentUser={currentUser}
               handleLoginClick={handleLoginClick}
               handleRegisterClick={handleRegisterClick}
             />
@@ -287,12 +287,14 @@ function App() {
             isOpen={activeModal === 'register'}
             onRegister={handleRegister}
             onCloseModal={closeActiveModal}
+            onSwitchToLogin={() => setActiveModal('login')}
           />
 
           <LoginModal
             isOpen={activeModal === 'login'}
             onLogin={handleLogin}
             onCloseModal={closeActiveModal}
+            onSwitchToRegister={() => setActiveModal('register')}
           />
           <EditProfileModal
             isOpen={activeModal === 'edit-profile'}

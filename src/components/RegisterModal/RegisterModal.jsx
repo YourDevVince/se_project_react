@@ -3,7 +3,12 @@ import { useForm } from '../../hooks/useForm';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import './RegisterModal.css';
 
-const RegisterModal = ({ isOpen, onRegister, onCloseModal }) => {
+const RegisterModal = ({
+  isOpen,
+  onRegister,
+  onCloseModal,
+  onSwitchToLogin,
+}) => {
   const defaultValues = { name: '', avatar: '', email: '', password: '' };
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
@@ -24,6 +29,8 @@ const RegisterModal = ({ isOpen, onRegister, onCloseModal }) => {
       isOpen={isOpen}
       handleCloseClick={onCloseModal}
       onSubmit={handleSubmit}
+      switchText='Log In'
+      onSwitch={onSwitchToLogin}
     >
       <label className='modal__label'>
         Email*
