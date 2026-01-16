@@ -31,52 +31,55 @@ function Header({
           {currentDate}, {weatherData.city}
         </p>
       </div>
+      <div className='header__toggle-container'>
+        <ToggleSwitch />
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddClick}
+              type='button'
+              className='header__add-clothes-btn'
+            >
+              + Add clothes
+            </button>
 
-      <ToggleSwitch />
-      {isLoggedIn ? (
-        <>
-          <button
-            onClick={handleAddClick}
-            type='button'
-            className='header__add-clothes-btn'
-          >
-            + Add clothes
-          </button>
+            <NavLink to='/profile' className='header__profile-link'>
+              <div className='header__user-container'>
+                <p className='header__username'>{currentUser?.name}</p>
 
-          <NavLink to='/profile' className='header__profile-link'>
-            <div className='header__user-container'>
-              <p className='header__username'>{currentUser?.name}</p>
-
-              {currentUser?.avatar ? (
-                <img
-                  className='header__avatar'
-                  src={currentUser.avatar}
-                  alt={currentUser.name}
-                />
-              ) : (
-                <div className='header__avatar-placeholder'>{firstLetter}</div>
-              )}
-            </div>
-          </NavLink>
-        </>
-      ) : (
-        <div className='header__auth'>
-          <button
-            type='button'
-            onClick={handleRegisterClick}
-            className='header__auth-btn'
-          >
-            Sign Up
-          </button>
-          <button
-            type='button'
-            onClick={handleLoginClick}
-            className='header__auth-btn'
-          >
-            Log In
-          </button>
-        </div>
-      )}
+                {currentUser?.avatar ? (
+                  <img
+                    className='header__avatar'
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                  />
+                ) : (
+                  <div className='header__avatar-placeholder'>
+                    {firstLetter}
+                  </div>
+                )}
+              </div>
+            </NavLink>
+          </>
+        ) : (
+          <div className='header__auth'>
+            <button
+              type='button'
+              onClick={handleRegisterClick}
+              className='header__auth-btn'
+            >
+              Sign Up
+            </button>
+            <button
+              type='button'
+              onClick={handleLoginClick}
+              className='header__auth-btn'
+            >
+              Log In
+            </button>
+          </div>
+        )}
+      </div>
     </header>
   );
 }

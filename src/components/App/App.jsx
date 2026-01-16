@@ -87,6 +87,7 @@ function App() {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
     setCurrentUser(null);
+    setClothingItems([]);
     closeActiveModal();
     navigate('/');
   };
@@ -191,6 +192,7 @@ function App() {
         localStorage.removeItem('jwt');
         setIsLoggedIn(false);
         setCurrentUser(null);
+        setClothingItems([]);
       });
   }, []);
 
@@ -204,12 +206,13 @@ function App() {
         console.error('Weather load failed', err);
       });
 
+    if (!isLoggedIn) return;
     getItems()
       .then((data) => {
         setClothingItems([...data].reverse());
       })
       .catch(console.error);
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (!activeModal) return;

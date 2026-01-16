@@ -19,3 +19,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+@media (max-width: 749px) {
+  .cards__list {
+    justify-content: space-around;
+  }
+}

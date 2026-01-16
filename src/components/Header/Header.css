@@ -12,6 +12,12 @@
   margin-right: auto;
 }
 
+.header__toggle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .header__logo {
   margin-right: 24px;
   width: 89px;
@@ -86,4 +92,28 @@
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
+}
+
+@media (max-width: 749px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .header__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+  }
+
+  .header__toggle-container {
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+
+  .header__user-container {
+    flex-direction: row-reverse;
+  }
 }
